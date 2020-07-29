@@ -1,3 +1,5 @@
+// Package ses_go is a simple wrapper around Amazon's AWS library
+// that provides a function to send email with SES.
 package ses_go
 
 import (
