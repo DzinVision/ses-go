@@ -61,10 +61,10 @@ func SendHTMLEmail(sender, recipient, subject, htmlContent string) (string, erro
 // The email will have  specified subject. Content should be HTML text that is sent as the body of the email.
 // `attachment` represents path to the attachment file.
 // Returns AWS email ID and error. If email ID could not be got, empty string is returned.
-func SendHTMLEmailWithAttachment(sender, recipient, subject, htmlContent, attachment string) (string, error) {
+func SendHTMLEmailWithAttachment(sender, recipient, subject, htmlContent, attachmentPath, attachmentName string) (string, error) {
 	// Construct new message.
 	msg := constructMail(sender, recipient, subject, "text/html", htmlContent)
-	msg.Attach(attachment)
+	msg.Attach(attachmentPath, mail.Rename(attachmentName))
 
 	return sendMail(msg)
 }
